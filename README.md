@@ -1,42 +1,42 @@
-# StockTracker Pro 🛒📊
+StockTracker Pro 
 
-**E-ticaret Stok & Fiyat Takip Sistemi**
+E-ticaret Stok & Fiyat Takip Sistemi**
 
 [![GitHub stars](https://img.shields.io/github/stars/KULLANICI_ADIN/stocktracker-pro?style=social)](https://github.com/KULLANICI_ADIN/stocktracker-pro)
 [![GitHub forks](https://img.shields.io/github/forks/KULLANICI_ADIN/stocktracker-pro?style=social)](https://github.com/KULLANICI_ADIN/stocktracker-pro)
 [![GitHub issues](https://img.shields.io/github/issues/KULLANICI_ADIN/stocktracker-pro)](https://github.com/KULLANICI_ADIN/stocktracker-pro/issues)
 [![GitHub license](https://img.shields.io/github/license/KULLANICI_ADIN/stocktracker-pro)](https://github.com/KULLANICI_ADIN/stocktracker-pro/blob/main/LICENSE)
 
-## 🎯 Proje Özeti
+ Proje Özeti
 
 StockTracker Pro, e-ticaret sitelerinden ürün stok durumu ve fiyat bilgilerini otomatik olarak takip eden, değişikliklerde uyarı gönderen ve raporlama yapan web tabanlı bir sistemdir.
 
-## ✨ Temel Özellikler
+##  Temel Özellikler
 
-### MVP (v1.0)
-- 🕷️ **Otomatik Web Scraping**: Playwright ile JavaScript-heavy siteler dahil
-- ⏰ **Zamanlanmış Tarama**: Esnek cron-benzeri planlama (15dk-günlük)
-- 📊 **Gerçek Zamanlı Dashboard**: Ürün durumu, fiyat değişimleri
-- 🔔 **Akıllı Uyarılar**: Email/Slack - stok bitimi, fiyat değişimleri
-- 📁 **Excel/CSV Export**: Özelleştirilebilir raporlar
-- 👥 **Çoklu Kullanıcı**: Rol tabanlı erişim (Admin/Operatör/Görüntüleyici)
-- 🛡️ **Proxy Desteği**: IP rotasyonu ve bot koruması
+ MVP (v1.0)
+-  **Otomatik Web Scraping**: Playwright ile JavaScript-heavy siteler dahil
+-  **Zamanlanmış Tarama**: Esnek cron-benzeri planlama (15dk-günlük)
+-  **Gerçek Zamanlı Dashboard**: Ürün durumu, fiyat değişimleri
+-  **Akıllı Uyarılar**: Email/Slack - stok bitimi, fiyat değişimleri
+-  **Excel/CSV Export**: Özelleştirilebilir raporlar
+-  **Çoklu Kullanıcı**: Rol tabanlı erişim (Admin/Operatör/Görüntüleyici)
+-  **Proxy Desteği**: IP rotasyonu ve bot koruması
 
-### Gelecek Sürümler (v1.1+)
-- 📈 **Gelişmiş Analitik**: Grafik ve trend analizi
-- 🔗 **API Entegrasyonları**: ERP/WMS bağlantıları
-- 🌐 **Çoklu Para Birimi**: KDV/kur hesaplamaları
-- 📱 **Mobil Bildirimler**: Push/SMS/WhatsApp
+Gelecek Sürümler (v1.1+)
+-  **Gelişmiş Analitik**: Grafik ve trend analizi
+-  **API Entegrasyonları**: ERP/WMS bağlantıları
+-  **Çoklu Para Birimi**: KDV/kur hesaplamaları
+-  **Mobil Bildirimler**: Push/SMS/WhatsApp
 
-## 🏗️ Teknik Stack
+ Teknik Stack
 
-- **Backend**: Python + FastAPI + PostgreSQL
-- **Scraping**: Playwright + httpx + BeautifulSoup
-- **Queue/Scheduling**: Celery + Redis
-- **Frontend**: React + TypeScript + Tailwind CSS
-- **Deployment**: Docker + Docker Compose
+- Backend**: Python + FastAPI + PostgreSQL
+- Scraping**: Playwright + httpx + BeautifulSoup
+- Queue/Scheduling**: Celery + Redis
+- Frontend**: React + TypeScript + Tailwind CSS
+- Deployment**: Docker + Docker Compose
 
-## 📂 Proje Yapısı
+  Proje Yapısı
 
 ```
 stocktracker-pro/
@@ -64,18 +64,18 @@ stocktracker-pro/
 └── scripts/               # Deploy ve maintenance scriptleri
 ```
 
-## 🚀 Hızlı Başlangıç
+ Hızlı Başlangıç
 
-### Gereksinimler
+ Gereksinimler
 - Python 3.11+
 - Node.js 18+
 - PostgreSQL 15+
 - Redis 7+
 - Docker & Docker Compose (önerilen)
 
-### Kurulum
+ Kurulum
 
-#### 1. Repository'yi klonla
+ 1. Repository'yi klonla
 ```bash
 git clone https://github.com/KULLANICI_ADIN/stocktracker-pro.git
 cd stocktracker-pro
@@ -93,7 +93,7 @@ docker-compose ps
 docker-compose logs -f
 ```
 
-#### 3. Manuel kurulum
+ 3. Manuel kurulum
 ```bash
 # Backend kurulumu
 cd backend
@@ -107,17 +107,17 @@ npm install
 npm run dev
 ```
 
-### Erişim URL'leri
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8000
-- **API Dokümantasyonu**: http://localhost:8000/docs
-- **Adminer (Database)**: http://localhost:8080
+ Erişim URL'leri
+- Frontend**: http://localhost:3000
+- Backend API**: http://localhost:8000
+- API Dokümantasyonu**: http://localhost:8000/docs
+- Adminer (Database)**: http://localhost:8080
 
-## 📖 API Dokümantasyonu
+ API Dokümantasyonu
 
 Backend çalıştıktan sonra: `http://localhost:8000/docs`
 
-## 🔧 Konfigürasyon
+ Konfigürasyon
 
 Ana konfigürasyon dosyaları:
 - `backend/app/core/config.py` - Backend ayarları
@@ -166,7 +166,7 @@ REACT_APP_API_URL=http://localhost:8000/api/v1
 - **Webhook** bildirimleri
 - **Özelleştirilebilir** uyarı kuralları
 
-## 👥 Katkıda Bulunma
+##  Katkıda Bulunma
 
 1. Fork et
 2. Feature branch oluştur (`git checkout -b feature/amazing-feature`)
@@ -188,16 +188,16 @@ cd backend && pytest
 cd ../frontend && npm test
 ```
 
-## 📝 Lisans
+## Lisans
 
 MIT License - Detaylar için `LICENSE` dosyasına bakınız.
 
-## 📞 İletişim
+## İletişim
 
 - **GitHub Issues**: [Proje Issues](https://github.com/KULLANICI_ADIN/stocktracker-pro/issues)
 - **Email**: [İletişim Bilgisi]
 
-## 🙏 Teşekkürler
+##  Teşekkürler
 
 Bu proje aşağıdaki açık kaynak projeleri kullanmaktadır:
 - [FastAPI](https://fastapi.tiangolo.com/)
@@ -207,8 +207,9 @@ Bu proje aşağıdaki açık kaynak projeleri kullanmaktadır:
 
 ---
 
-**StockTracker Pro** - E-ticaret operasyonlarınızı optimize edin! 🚀
+**StockTracker Pro** - E-ticaret operasyonlarınızı optimize edin! 
 
 [⬆ Back to top](#stocktracker-pro-)
+
 
 
