@@ -1,0 +1,80 @@
+{
+  "name": "stocktracker-pro-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "StockTracker Pro - E-ticaret Stok & Fiyat Takip Sistemi Frontend",
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@headlessui/react": "^1.7.13",
+    "@heroicons/react": "^2.0.16",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.13",
+    "@mui/x-data-grid": "^6.0.3",
+    "@mui/x-date-pickers": "^6.0.3",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "axios": "^1.11.0",
+    "date-fns": "^2.29.3",
+    "immer": "^9.0.21",
+    "lucide-react": "^0.537.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.43.8",
+    "react-hot-toast": "^2.5.2",
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.30.1",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.5.0",
+    "typescript": "^4.9.5",
+    "web-vitals": "^3.3.0",
+    "zustand": "^4.3.6"
+  },
+  "devDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.21.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^24.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.36.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+    "vite": "^7.1.1"
+  },
+  "scripts": {
+    "dev": "vite",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:8000"
+}

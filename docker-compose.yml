@@ -1,0 +1,150 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: stocktracker_db
+    environment:
+      POSTGRES_DB: stocktracker
+      POSTGRES_USER: stocktracker_user
+      POSTGRES_PASSWORD: stocktracker_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - stocktracker_network
+
+  # Redis for caching and Celery broker
+  redis:
+    image: redis:7-alpine
+    container_name: stocktracker_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - stocktracker_network
+
+  # FastAPI Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: stocktracker_backend
+    environment:
+      DATABASE_URL: postgresql://stocktracker_user:stocktracker_pass@postgres:5432/stocktracker
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: your-secret-key-change-in-production
+      ENVIRONMENT: development
+    volumes:
+      - ./backend:/app
+      - ./shared:/app/shared
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+    networks:
+      - stocktracker_network
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # Celery Worker for background tasks
+  celery_worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: stocktracker_worker
+    environment:
+      DATABASE_URL: postgresql://stocktracker_user:stocktracker_pass@postgres:5432/stocktracker
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: your-secret-key-change-in-production
+      ENVIRONMENT: development
+    volumes:
+      - ./backend:/app
+      - ./shared:/app/shared
+    depends_on:
+      - postgres
+      - redis
+      - backend
+    restart: unless-stopped
+    networks:
+      - stocktracker_network
+    command: celery -A app.core.celery worker --loglevel=info
+    profiles:
+      - worker
+
+  # Celery Beat for scheduled tasks
+  celery_beat:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: stocktracker_scheduler
+    environment:
+      DATABASE_URL: postgresql://stocktracker_user:stocktracker_pass@postgres:5432/stocktracker
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: your-secret-key-change-in-production
+      ENVIRONMENT: development
+    volumes:
+      - ./backend:/app
+      - ./shared:/app/shared
+    depends_on:
+      - postgres
+      - redis
+      - backend
+    restart: unless-stopped
+    networks:
+      - stocktracker_network
+    command: celery -A app.core.celery beat --loglevel=info
+    profiles:
+      - scheduler
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: stocktracker_frontend
+    environment:
+      REACT_APP_API_URL: http://backend:8000/api/v1
+      REACT_APP_ENVIRONMENT: development
+    # No bind mount to avoid host node_modules overriding Linux deps
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - stocktracker_network
+    command: npm run dev -- --host 0.0.0.0 --port 3000
+
+  # Nginx Proxy (Production'da kullanmak için)
+  nginx:
+    image: nginx:alpine
+    container_name: stocktracker_proxy
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+      - frontend
+    restart: unless-stopped
+    networks:
+      - stocktracker_network
+    profiles:
+      - production
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  stocktracker_network:
+    driver: bridge
