@@ -194,8 +194,7 @@ MIT License - Detaylar için `LICENSE` dosyasına bakınız.
 
 ## İletişim
 
-- **GitHub Issues**: [Proje Issues](https://github.com/KULLANICI_ADIN/stocktracker-pro/issues)
-- **Email**: [İletişim Bilgisi]
+- **Email**: glrrfrkn@gmail.com
 
 ##  Teşekkürler
 
@@ -210,6 +209,7 @@ Bu proje aşağıdaki açık kaynak projeleri kullanmaktadır:
 **StockTracker Pro** - E-ticaret operasyonlarınızı optimize edin! 
 
 [⬆ Back to top](#stocktracker-pro-)
+
 
 
 
